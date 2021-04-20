@@ -1,0 +1,47 @@
+{
+  "name": "rheme",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "types": "./types/index.d.ts",
+  "scripts": {
+    "start": "snowpack dev",
+    "build": "snowpack build",
+    "preview": "yarn run build && http-server build",
+    "format": "prettier --write \"src/**/*.{js,ts,svelte}\"",
+    "lint": "prettier --check \"src/**/*.{js,ts,svelte}\"",
+    "tsd": "tsc -p tsconfig-d.json --emitDeclarationOnly",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "@snowpack/plugin-dotenv": "^2.1.0",
+    "@snowpack/plugin-postcss": "^1.2.2",
+    "@snowpack/plugin-sass": "^1.4.0",
+    "@snowpack/plugin-typescript": "^1.2.1",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/svelte": "^3.0.3",
+    "@types/node": "^14.14.37",
+    "autoprefixer": "^10.2.5",
+    "babel-jest": "^26.6.3",
+    "browserslist": "^4.16.3",
+    "cssnano": "^4.1.10",
+    "http-server": "^0.12.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.6.3",
+    "postcss": "^8.2.9",
+    "postcss-cli": "^8.3.1",
+    "postcss-import": "^14.0.1",
+    "postcss-normalize": "^9.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.2.1",
+    "snowpack": "^3.2.2",
+    "ts-jest": "^26.5.4",
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "color2k": "^1.2.4"
+  }
+}

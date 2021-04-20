@@ -1,0 +1,38 @@
+{
+  "include": ["src/*", "src/node_modules", "types"],
+  "exclude": ["node_modules/*", "__sapper__/*", "public/*", "setupTests"],
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ES2017.Object", "ESNext"],
+    "moduleResolution": "node",
+    "allowJs": true,
+    "checkJs": false,
+    "baseUrl": "./src",
+    "paths": {
+      // If you configured any Snowpack aliases, add them here.
+      // Add this line to get types for streaming imports (packageOptions.source="remote"):
+      // "*": [".snowpack/types/*"]
+      // More info: https://www.snowpack.dev/guides/streaming-imports
+      // Other
+      // "~/*": ["./src/*"],
+      // "public/*": ["./public/*"],
+      // "types/*": ["./types/*"],
+      // "helpers/*": ["./src/helpers/*"]
+    },
+    /* noEmit - Snowpack builds (emits) files, not tsc. */
+    "noEmit": true,
+    /* Additional Options */
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "useDefineForClassFields": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "importsNotUsedAsValues": "error",
+    "typeRoots": ["node_modules/@types", "types"]
+  }
+}
