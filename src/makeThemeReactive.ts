@@ -1,5 +1,5 @@
 import ThemeRendererClass from './ThemeRenderer'
-import { isFunction } from './helpers'
+import { get, isFunction } from './helpers'
 import { ThemeConfig, ThemeMessage } from './types'
 
 interface Watcher {
@@ -25,7 +25,24 @@ interface ThemeSubject {
   }
 }
 
-function makeThemeReactive(themeConfig: ThemeConfig, prefix = '') {
+export function r(refPath: string, cb?: (value: string) => string | null) {
+  return function (theme: any) {
+    let value = get(theme, refPath)
+    if (cb) {
+      value = cb(value)
+    }
+    return {
+      refPath,
+      value,
+      cb,
+    }
+  }
+}
+
+export default function makeThemeReactive(
+  themeConfig: ThemeConfig,
+  prefix = ''
+) {
   const watchers: Watchers = {}
 
   function addWatcher(key: string, toWatch: string, cb = undefined) {
@@ -62,9 +79,9 @@ function makeThemeReactive(themeConfig: ThemeConfig, prefix = '') {
     Object.defineProperty(obj, key, {
       get() {
         if (isFunction(val)) {
-          const { value: compotedValue, refPath, cb } = val(themeConfig)
+          const { value: finalVal, refPath, cb } = val(themeConfig)
           addWatcher(propFullPath, refPath, cb)
-          return compotedValue
+          return finalVal
         }
         return val
       },
@@ -110,5 +127,3 @@ function makeThemeReactive(themeConfig: ThemeConfig, prefix = '') {
 
   return renderer
 }
-
-export { makeThemeReactive as default }

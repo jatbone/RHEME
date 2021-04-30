@@ -1,6 +1,6 @@
 import { darken, transparentize, readableColor } from 'color2k'
 
-import { r } from '../helpers'
+import { r } from '../makeThemeReactive'
 
 export const getBoxShadow = (
   offsetX = 0,
@@ -61,6 +61,8 @@ const theme = {
       outline: r('colors.gray.100', (color) =>
         getBoxShadow(0, 0, 0, '6px', transparentize(color, 0.4))
       ),
+      testBig: r('button.big.ztest'),
+      ztest: 'yellow',
     },
     'test-root': r('colors.primary'),
     primary: {

@@ -78,19 +78,5 @@ export const setDocumentStyleProperty = (
   document.documentElement.style.setProperty(propName, newValue)
 }
 
-export function r(refPath: string, cb?: (value: string) => string | null) {
-  return function (from: any) {
-    let value = get(from, refPath)
-    if (cb) {
-      value = cb(value)
-    }
-    return {
-      refPath,
-      value,
-      cb,
-    }
-  }
-}
-
 export const getFullPath = (path: string, prop: string) =>
   `${path ? `${path}.` : ''}${prop}`
